@@ -1,0 +1,22 @@
+/* How-to-play screen */
+.panel.howto { gap: 16px; }
+.howto-touch, .howto-desktop { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+body:not(.touch) .howto-touch, body.touch .howto-desktop { display: none; }
+body:not(.touch) .only-touch, body.touch .only-desktop { display: none; }
+.howto-text { font-weight: 700; color: #C5D9E2; font-size: 16px; line-height: 1.5; }
+.howto-text b { color: var(--player); }
+.swipe-demo { position: relative; width: 200px; height: 92px; border-radius: 18px; border: 2px dashed var(--wall); background: rgba(17,66,90,.25); overflow: hidden; }
+.swipe-hand { position: absolute; width: 48px; height: 48px; top: 22px; left: 18px; animation: swipe 2.4s ease-in-out infinite; }
+.swipe-trail { position: absolute; top: 44px; left: 42px; height: 4px; width: 0; border-radius: 4px; background: linear-gradient(90deg, rgba(232,255,89,0), rgba(232,255,89,.7)); animation: trail 2.4s ease-in-out infinite; }
+@keyframes swipe { 0%,10% { transform: translateX(0); opacity: 0; } 20% { opacity: 1; } 55% { transform: translateX(116px); opacity: 1; } 70%,100% { transform: translateX(116px); opacity: 0; } }
+@keyframes trail { 0%,15% { width: 0; opacity: 1; } 55% { width: 116px; opacity: 1; } 75%,100% { width: 116px; opacity: 0; } }
+.keys { display: grid; grid-template-columns: repeat(3, 46px); grid-template-rows: repeat(2, 46px); gap: 6px; }
+.keys .k { display: grid; place-items: center; border-radius: 10px; border: 2px solid var(--wall); background: rgba(17,66,90,.45); color: var(--accent); font-size: 20px; font-weight: 800; box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); animation: keypress 2.4s infinite; }
+.keys .up { grid-column: 2; grid-row: 1; animation-delay: 0s; }
+.keys .left { grid-column: 1; grid-row: 2; animation-delay: .6s; }
+.keys .down { grid-column: 2; grid-row: 2; animation-delay: 1.2s; }
+.keys .right { grid-column: 3; grid-row: 2; animation-delay: 1.8s; }
+@keyframes keypress { 0%,18% { border-color: var(--accent); color: var(--player); transform: translateY(2px); box-shadow: none; } 25%,100% { } }
+.howto-rules { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; font-size: 14px; font-weight: 700; color: var(--muted); width: 100%; padding: 12px 14px; border-radius: 14px; background: rgba(17,66,90,.3); }
+.tap-start { font-family: var(--heading); font-weight: 800; font-size: 17px; color: var(--player); animation: pulse .9s ease-in-out infinite alternate; }
+#screen-howto { cursor: pointer; }
